@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teacher.TeacherTestActivity"
+    android:background="@drawable/background">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerTestSayi">
+    </Spinner>
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_edittext">
+        <TextView
+            android:paddingLeft="10dp"
+            android:id="@+id/textViewKonuSayi"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Konu Sayısı" />
+        <TextView
+            android:id="@+id/textViewSoruSayi"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Soru Sayısı" />
+    </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextSoru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Soru"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext_2"
+            android:lines="5"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editTextA"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:hint="cevap A"
+            android:paddingLeft="10dp"
+            android:background="@drawable/rounded_edittext_2"
+            android:lines="3"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="65dp"
+            android:id="@+id/ImageA"
+            android:src="@drawable/add"
+            android:layout_marginBottom="20sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editTextB"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:hint="cevap B"
+            android:paddingLeft="10dp"
+            android:background="@drawable/rounded_edittext_2"
+            android:lines="3" />
+
+        <ImageView
+            android:id="@+id/ImageB"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="65dp"
+            android:src="@drawable/add"
+            android:layout_marginBottom="20sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editTextC"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:hint="cevap C"
+            android:paddingLeft="10dp"
+            android:background="@drawable/rounded_edittext_2"
+            android:lines="3"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="65dp"
+            android:id="@+id/ImageC"
+            android:src="@drawable/add"
+            android:layout_marginBottom="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editTextD"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:hint="cevap D"
+            android:paddingLeft="10dp"
+            android:background="@drawable/rounded_edittext_2"
+            android:lines="3"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="65dp"
+            android:id="@+id/ImageD"
+            android:src="@drawable/add"
+            android:layout_marginBottom="20sp" />
+    </LinearLayout>
+
+
+
+
+
+
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext_2"
+        android:layout_gravity="end"
+        android:id="@+id/radioGroupCevap">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:paddingRight="20dp"
+            android:id="@+id/radioButtonA"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:paddingRight="20dp"
+            android:id="@+id/radioButtonB"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:paddingRight="20dp"
+            android:id="@+id/radioButtonC"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D"
+            android:paddingRight="20dp"
+            android:id="@+id/radioButtonD"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonEkle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Soru Ekle"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_button"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="geri"
+            android:onClick="geri"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_button_3"/>
+        <Button
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ileri"
+            android:onClick="ileri"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_button_2"/>
+    </LinearLayout>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

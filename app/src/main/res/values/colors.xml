@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorBirinci">#DA9128</color>
+    <color name="colorIkinci">#895100</color>
+    <color name="colorUcuncu">#AF6F12</color>
+    <color name="colorDorduncu">#EBAC51</color>
+    <color name="colorBesinci">#FFCB7F</color>
+    <color name="colorAltinci">#DA6228</color>
+    <color name="colorYedinci">#892C00</color>
+    <color name="colorSekiz">#AF4512</color>
+</resources>
