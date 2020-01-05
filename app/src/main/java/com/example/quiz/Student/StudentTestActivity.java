@@ -1,8 +1,5 @@
 package com.example.quiz.Student;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +11,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.quiz.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -39,7 +38,7 @@ public class StudentTestActivity extends AppCompatActivity {
     private String userId,imUrlA,imUrlB,imUrlC,imUrlD,ogrCevap;
     private static int[] tempYanlis={0,0,0,0,0,0,0,0,0,0},tempDogru={0,0,0,0,0,0,0,0,0,0};
     private String[] test={"1","2","3","4","5"};
-    private String[] konu={"Doğa ve İnsan","Dünya’nın Şekli ve Hareketleri","Coğrafi Konum","a","b","c","d","e","f","g"};
+    private String[] konu={"Doğa ve İnsan","Dünya’nın Şekli ve Hareketleri","Coğrafi Konum","Harita Bilgisi","İklim Bilgisi","Yerin Şekillenmesi","Doğanın Varlıkları","Beşeri Yapı","Nüfusun Gelişimi","Göç Nedenleri ve Sonuçları"};
     private String[] soru={"1","2","3","4","5","6","7","8","9"};
     private static String rbCev;
     private DatabaseReference mUserDatabase,mQuiz,mHocaDatabase,mDurumDatabase,dbSil,mKayitDb,mSoruSilDb,dbYeni;
@@ -117,6 +116,10 @@ public class StudentTestActivity extends AppCompatActivity {
 
                 int selectedId = rgCevap.getCheckedRadioButtonId();
                 rbCevap= (RadioButton) findViewById(selectedId);
+                if(rbCevap==null){
+                    Toast.makeText(StudentTestActivity.this, "Cevap boş bırakılamaz.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 rbCev=rbCevap.getText().toString();
 
                 getButton();

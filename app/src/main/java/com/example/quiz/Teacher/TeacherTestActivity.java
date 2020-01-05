@@ -1,8 +1,5 @@
 package com.example.quiz.Teacher;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +17,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.quiz.R;
@@ -43,24 +43,24 @@ import java.util.Map;
 public class TeacherTestActivity extends AppCompatActivity {
 
     private String[] test={"1","2","3","4"};
-    private String[] konu={"Doğa ve İnsan","Dünya’nın Şekli ve Hareketleri","Coğrafi Konum","a","b","c","d","e","f","g"};
+    private String[] konu={"Doğa ve İnsan","Dünya’nın Şekli ve Hareketleri","Coğrafi Konum","Harita Bilgisi","İklim Bilgisi","Yerin Şekillenmesi","Doğanın Varlıkları","Beşeri Yapı","Nüfusun Gelişimi","Göç Nedenleri ve Sonuçları"};
     private String[] soru={"1","2","3","4","5","6","7","8","9"};
     private int size=test.length;
     private static int i,j=0,k=0;
-    private Spinner spTest;
+    private Spinner spTest,spKonu;
     private Button btnEkle;
     private EditText editTextsoru,editTextcvpA,editTextcvpB,editTextcvpC,editTextcvpD;
     private RadioButton rButtonCevap;
     private RadioGroup rdGroupCevap;
     private TextView tvKonuSayi,tvSoruSayi;
-    private ImageView imA,imB,imC,imD;
+    private ImageView imA,imB,imC,imD,imSoru;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mUserDatabase,mQuiz,mBilgiDb,ogrenciDb;
 
-    private String userId,textTest,textKonu,textSoru,soruYukle,cevapYukleA,cevapYukleB,cevapYukleC,cevapYukleD,imUrlA,imUrlB,imUrlC,imUrlD;
+    private String userId,textTest,textKonu,textSoru,soruYukle,cevapYukleA,cevapYukleB,cevapYukleC,cevapYukleD,imUrlA,imUrlB,imUrlC,imUrlD,imUrlSoru;
     private static String ogrenciId;
-    private Uri uriA,uriB,uriC,uriD;
+    private Uri uriA,uriB,uriC,uriD,uriSoru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,7 @@ public class TeacherTestActivity extends AppCompatActivity {
         imB = (ImageView) findViewById(R.id.ImageB);
         imC = (ImageView) findViewById(R.id.ImageC);
         imD = (ImageView) findViewById(R.id.ImageD);
+        imSoru=(ImageView)findViewById(R.id.imageSoru);
 
         tvKonuSayi = (TextView) findViewById(R.id.textViewKonuSayi);
         tvSoruSayi = (TextView) findViewById(R.id.textViewSoruSayi);
@@ -92,17 +93,36 @@ public class TeacherTestActivity extends AppCompatActivity {
         textSoru=soru[k];
 
         spTest=(Spinner)findViewById(R.id.spinnerTestSayi);
+        spKonu=(Spinner)findViewById(R.id.spinnerKonuSayi);
 
         ArrayAdapter<String> adapterTest=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, test);;
         adapterTest.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spTest.setAdapter(adapterTest);
 
+        ArrayAdapter<String> adapterKonu=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, konu);;
+        adapterKonu.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spKonu.setAdapter(adapterKonu);
+
         spTest.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 textTest=spTest.getSelectedItem().toString();
-                Toast.makeText(TeacherTestActivity.this,textTest,Toast.LENGTH_SHORT).show();
                 i=Integer.parseInt(textTest);
+                testInfo(i,j,k);
+                getQuizInfo(i,j,k);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spKonu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                textKonu=spKonu.getSelectedItem().toString();
+                j=spKonu.getSelectedItemPosition();
                 testInfo(i,j,k);
                 getQuizInfo(i,j,k);
             }
@@ -120,8 +140,12 @@ public class TeacherTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int selectedId = rdGroupCevap.getCheckedRadioButtonId();
+
                 rButtonCevap= (RadioButton) findViewById(selectedId);
-                Toast.makeText(TeacherTestActivity.this, rButtonCevap.getText(), Toast.LENGTH_SHORT).show();
+                if(rButtonCevap==null){
+                    Toast.makeText(TeacherTestActivity.this, "Cevap boş bırakılamaz.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 setQuizInfo(i,j,k);
 
             }
@@ -159,6 +183,14 @@ public class TeacherTestActivity extends AppCompatActivity {
                 startActivityForResult(intent, 4);
             }
         });
+        imSoru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, 5);
+            }
+        });
 
     }
 
@@ -180,6 +212,7 @@ public class TeacherTestActivity extends AppCompatActivity {
         userInfo.put("cevapC",cevapYukleC);
         userInfo.put("cevapD",cevapYukleD);
         userInfo.put("cevap",rButtonCevap.getText().toString());
+        userInfo.put("soruImage","default");
         userInfo.put("cevapImageA","default");
         userInfo.put("cevapImageB","default");
         userInfo.put("cevapImageC","default");
@@ -198,6 +231,9 @@ public class TeacherTestActivity extends AppCompatActivity {
         }
         if(uriD!=null){
             setImageUrl(uriD,"cevapImageD");
+        }
+        if(uriSoru!=null){
+            setImageUrl(uriSoru,"soruImage");
         }
     }
 
@@ -257,6 +293,10 @@ public class TeacherTestActivity extends AppCompatActivity {
         if(requestCode == 4 && resultCode == Activity.RESULT_OK) {
             final Uri imageUriD = data.getData();
             uriD=imageUriD;imD.setImageURI(uriD);
+        }
+        if(requestCode == 5 && resultCode == Activity.RESULT_OK) {
+            final Uri soruUri = data.getData();
+            uriSoru=soruUri;imSoru.setImageURI(uriSoru);
         }
     }
 
@@ -380,6 +420,18 @@ public class TeacherTestActivity extends AppCompatActivity {
                                 break;
                         }
                     }
+                    Glide.clear(imSoru);
+                    if(map.get("soruImage")!=null){
+                         imUrlSoru= map.get("soruImage").toString();
+                        switch(imUrlSoru) {
+                            case "default":
+                                Glide.with(getApplication()).load(R.drawable.add).into(imSoru);
+                                break;
+                            default:
+                                Glide.with(getApplication()).load(imUrlSoru).into(imSoru);
+                                break;
+                        }
+                    }
 
                 }
 
@@ -394,10 +446,12 @@ public class TeacherTestActivity extends AppCompatActivity {
                     Glide.clear(imB);
                     Glide.clear(imC);
                     Glide.clear(imD);
+                    Glide.clear(imSoru);
                     Glide.with(getApplication()).load(R.drawable.add).into(imA);
                     Glide.with(getApplication()).load(R.drawable.add).into(imB);
                     Glide.with(getApplication()).load(R.drawable.add).into(imC);
                     Glide.with(getApplication()).load(R.drawable.add).into(imD);
+                    Glide.with(getApplication()).load(R.drawable.add).into(imSoru);
                 }
             }
 
@@ -409,7 +463,7 @@ public class TeacherTestActivity extends AppCompatActivity {
     }
 
     private void testInfo(int i,int j,int k){
-        tvKonuSayi.setText("Konu: "+konu[j]);
+        tvKonuSayi.setText("Konu:"+konu[j]);
         tvSoruSayi.setText("Soru: "+soru[k]);
     }
 

@@ -16,41 +16,55 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerTestSayi">
     </Spinner>
+    <Spinner
+        android:id="@+id/spinnerKonuSayi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <LinearLayout
-
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_edittext">
+        android:orientation="horizontal">
         <TextView
-            android:paddingLeft="10dp"
             android:id="@+id/textViewKonuSayi"
             android:layout_width="0dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.8"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Konu Sayısı" />
+            android:hint="Soru Sayısı" />
+
         <TextView
             android:id="@+id/textViewSoruSayi"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Soru Sayısı" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <EditText
             android:id="@+id/editTextSoru"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.8"
             android:ems="10"
             android:hint="Soru"
             android:paddingLeft="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext_2"
             android:lines="5"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="65dp"
+            android:id="@+id/imageSoru"
+            android:src="@drawable/add"
+            android:layout_marginBottom="20sp"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"

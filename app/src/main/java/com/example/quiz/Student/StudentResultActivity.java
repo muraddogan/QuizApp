@@ -1,10 +1,9 @@
 package com.example.quiz.Student;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quiz.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +21,7 @@ import java.util.Map;
 public class StudentResultActivity extends AppCompatActivity {
 
     private String[] test={"1","2","3","4","5"};
-    private String[] konu={"Doğa ve İnsan","Dünya’nın Şekli ve Hareketleri","Coğrafi Konum","a","b","c","d","e","f","g"};
+    private String[] konu={"Doğa ve İnsan","Dünya’nın Şekli ve Hareketleri","Coğrafi Konum","Harita Bilgisi","İklim Bilgisi","Yerin Şekillenmesi","Doğanın Varlıkları","Beşeri Yapı","Nüfusun Gelişimi","Göç Nedenleri ve Sonuçları"};
 
     private static int i,j,toplamYanlis,toplamDogru;
     private static long[] num;

@@ -1,9 +1,9 @@
 package com.example.quiz.Teacher;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quiz.R;
 import com.google.firebase.auth.FirebaseAuth;

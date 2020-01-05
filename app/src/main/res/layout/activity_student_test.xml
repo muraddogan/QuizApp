@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Student.StudentTestActivity"
     android:orientation="vertical">
     <LinearLayout
@@ -46,22 +47,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_edittext_2"
         android:ems="10"
         android:hint="Soru"
         android:inputType="textMultiLine"
-        android:lines="5"/>
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_edittext"
         android:id="@+id/textViewA"
         android:hint="cevap A"
-        android:inputType="textMultiLine"
-        android:lines="3"/>
+        android:inputType="textMultiLine"/>
 
         <ImageView
             android:id="@+id/cevapImageA"
@@ -72,12 +74,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_edittext"
         android:id="@+id/textViewB"
         android:hint="cevap B"
-        android:inputType="textMultiLine"
-        android:lines="3"/>
+        android:inputType="textMultiLine"/>
         <ImageView
             android:id="@+id/cevapImageB"
             android:layout_width="match_parent"
@@ -87,12 +89,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_edittext"
         android:id="@+id/textViewC"
         android:hint="cevap C"
-        android:inputType="textMultiLine"
-        android:lines="3"/>
+        android:inputType="textMultiLine" />
         <ImageView
             android:id="@+id/cevapImageC"
             android:layout_width="match_parent"
@@ -102,12 +104,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_edittext"
         android:id="@+id/textViewD"
         android:hint="cevap D"
-        android:inputType="textMultiLine"
-        android:lines="3"/>
+        android:inputType="textMultiLine" />
         <ImageView
             android:id="@+id/cevapImageD"
             android:layout_width="match_parent"
@@ -165,15 +167,16 @@
                 android:textSize="20dp"
                 android:paddingLeft="20dp"/>
         </LinearLayout>
-    <Button
-        android:id="@+id/buttonCevap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cevapla"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/rounded_button"/>
+
+        <Button
+            android:id="@+id/buttonCevap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_button"
+            android:text="Cevapla" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
